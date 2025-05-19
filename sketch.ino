@@ -1,16 +1,17 @@
+// Including library
 #include <WiFi.h>
 #include <WebServer.h>
 #include <OneWire.h>
-#include <DallasTemperature.h>
+#include <DallasTemperature.h> // This library automatically converts the temperature sensor's value to Celsius
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
 #define ONE_WIRE_BUS 4
-const int buzzer = 14;
-const int gassensor = 34;
-const int heater = 16;
-const int cooler = 0;
+const int buzzer = 14; // This pin defines a buzzer which notifies when any appliance is turning on or off
+const int gassensor = 34; // This pin defines a gas sensor to measure air quality
+const int heater = 16; //This pin is defined for a relay which controls a heater
+const int cooler = 0;// This pin defines a relay which controls a cooler or a cooling system like AC (air conditioner)
 const int aripurifier = 15;
 
 #define SCREEN_WIDTH 128
@@ -48,7 +49,7 @@ void setup() {
   if (sensors.getDeviceCount() == 0) {
     Serial.println("CRITICAL: No DS18B20 sensors found!");
   }
-
+// Define the pin
   pinMode(buzzer, OUTPUT);
   digitalWrite(buzzer, LOW);
   pinMode(gassensor, INPUT);
@@ -100,7 +101,7 @@ void loop() {
 
   delay(1000);
 }
-
+// Now, will print on the display
 void connectToWiFi() {
   display.clearDisplay();
   display.setCursor(0,0);
